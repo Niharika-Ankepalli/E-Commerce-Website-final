@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <section class="cart-section">
+        <h1>Your Cart</h1>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-summary">
+            <p><strong>Total Price:</strong> $<span id="totalPrice">0</span></p>
+            <button class="btn-checkout" onclick="checkout()">Proceed to Payment</button>
+        </div>
+    </section>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function updateCartDisplay() {
+            const cartItemsDiv = document.getElementById("cartItems");
+            const totalPriceDiv = document.getElementById("totalPrice");
+            cartItemsDiv.innerHTML = "";
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = "<p>Your cart is empty!</p>";
+                totalPriceDiv.textContent = "0";
+                return;
+            }
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartItemsDiv.innerHTML += `
+                    <div class="cart-item">
+                        <span class="item-name">${item.name}</span>
+                        <span class="item-price">$${item.price.toFixed(2)}</span>
+                        <button class="btn-remove" onclick="removeFromCart(${index})">Remove</button>
+                    </div>`;
+            });
+
+            totalPriceDiv.textContent = total.toFixed(2);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+
+            alert("Thank you for your purchase!");
+            cart = [];
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+        document.addEventListener("DOMContentLoaded", updateCartDisplay);
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">ShopNow</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="cart.html">Cart</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h1>Complete Your Payment</h1>
+        <form id="payment-form">
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" required>
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" required>
+            <label for="payment-type">Payment Type:</label>
+            <select id="payment-type" required>
+                <option value="credit">Credit Card</option>
+                <option value="debit">Debit Card</option>
+                <option value="netbanking">Net Banking</option>
+            </select>
+            <button type="submit" class="btn">Pay Now</button>
+        </form>
+        <div id="payment-message" class="success-message"></div>
+    </main>
+    <footer>
+        <p>© 2024 ShopNow. All rights reserved.</p>
+    </footer>
+    <script src="payment.js"></script>
+</body>
+</html>
