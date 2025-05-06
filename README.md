@@ -5,7 +5,7 @@ This is a fully responsive **E-Commerce Website** named **SmartMart**, designed 
 ## 🚀 Live Demo
 👉 [Visit SmartMart](https://e-commerce-website-smartmart.netlify.app/)
 
-## 🔧 Technologies Used
+## Technologies Used
 - **HTML5** – For building structure
 - **CSS3** – For responsive styling
 - **JavaScript** – For dynamic features like filtering and sorting
